@@ -1,4 +1,4 @@
-package com.pavliuchenko.jwtauthservice.config.auth;
+package com.pavliuchenko.jwtauthservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

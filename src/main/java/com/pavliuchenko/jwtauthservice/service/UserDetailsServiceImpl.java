@@ -1,6 +1,7 @@
 package com.pavliuchenko.jwtauthservice.service;
 
 import com.pavliuchenko.jwtauthservice.repository.UserRepository;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
+@Primary
 public class UserDetailsServiceImpl implements ReactiveUserDetailsService {
 
     private UserRepository userRepository;

@@ -13,16 +13,19 @@ public class UserController {
 
 
     @PostMapping(value = "/sign-in", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    Mono<ResponseEntity> signIn(@RequestBody SignIn model) {
-
+    public Mono<ResponseEntity> signIn(@RequestBody SignIn model) {
+        return Mono.empty();
     }
 
     @PostMapping("/sign-up")
-    Mono<ResponseEntity> signUp(@RequestBody SignUp model) {
-
+    public Mono<ResponseEntity> signUp(@RequestBody SignUp model) {
+        return Mono.empty();
     }
 
     @GetMapping("/user-info")
-    Mono<UserInfo> getUserInfo(@RequestParam String id) {
+    public Mono<UserInfo> getUserInfo(@RequestParam String id) {
+        return Mono.empty();
     }
+
+
 }

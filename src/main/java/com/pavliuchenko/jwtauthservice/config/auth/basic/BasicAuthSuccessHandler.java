@@ -1,5 +1,6 @@
 package com.pavliuchenko.jwtauthservice.config.auth.basic;
 
+import com.pavliuchenko.jwtauthservice.domain.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
 import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
@@ -10,6 +11,7 @@ public class BasicAuthSuccessHandler implements ServerAuthenticationSuccessHandl
 
     @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
-        return null;
+        User user = (User) authentication.getPrincipal();
+        return Mono.empty();
     }
 }

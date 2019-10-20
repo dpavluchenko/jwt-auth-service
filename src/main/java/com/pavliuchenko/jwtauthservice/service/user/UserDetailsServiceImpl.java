@@ -1,4 +1,4 @@
-package com.pavliuchenko.jwtauthservice.service;
+package com.pavliuchenko.jwtauthservice.service.user;
 
 import com.pavliuchenko.jwtauthservice.repository.UserRepository;
 import org.springframework.context.annotation.Primary;

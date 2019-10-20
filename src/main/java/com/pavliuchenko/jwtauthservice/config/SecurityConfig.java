@@ -4,7 +4,6 @@ import com.pavliuchenko.jwtauthservice.config.auth.basic.BasicAuthSuccessHandler
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -27,8 +26,10 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
+                .csrf().disable()
                 .authorizeExchange()
-                .pathMatchers("")
+                .pathMatchers("/sign-up","/service/public").permitAll()
+                .pathMatchers("/sign-in")
                 .authenticated()
                 .and()
                 .addFilterAt(createBasicFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
@@ -55,7 +56,7 @@ public class SecurityConfig {
     }
 
     private WebFilter createJwtAuthFilter() {
-
+        return null;
     }
 
 }

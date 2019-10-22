@@ -1,6 +1,7 @@
 package com.pavliuchenko.jwtauthservice.config;
 
 import com.pavliuchenko.jwtauthservice.config.auth.basic.BasicAuthSuccessHandler;
+import com.pavliuchenko.jwtauthservice.service.jwt.JwtService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ import org.springframework.web.server.WebFilter;
 public class SecurityConfig {
 
     private final ReactiveUserDetailsService userDetailsService;
+    private final JwtService jwtService;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {

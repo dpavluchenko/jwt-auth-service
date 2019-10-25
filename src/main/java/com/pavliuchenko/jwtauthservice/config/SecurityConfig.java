@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .and()
                 .addFilterAt(createBasicFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
                 .authorizeExchange()
-                .pathMatchers("")
+                .pathMatchers("/user-info")
                 .authenticated()
                 .and()
                 .addFilterAt(createJwtAuthFilter(), SecurityWebFiltersOrder.AUTHENTICATION);
@@ -53,7 +53,7 @@ public class SecurityConfig {
         manager.setPasswordEncoder(passwordEncoder());
         AuthenticationWebFilter filter = new AuthenticationWebFilter(manager);
         filter.setServerAuthenticationConverter(new ServerFormLoginAuthenticationConverter());
-        filter.setAuthenticationSuccessHandler(new BasicAuthSuccessHandler());
+        filter.setAuthenticationSuccessHandler(new BasicAuthSuccessHandler(jwtService));
         return filter;
     }
 

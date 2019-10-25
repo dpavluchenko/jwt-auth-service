@@ -24,7 +24,7 @@ public class JwtServiceImpl implements JwtService{
     private final KeyService keyService;
 
     @Override
-    public boolean isValidToken(String token) {
+    public boolean validateToken(String token) {
         return false;
     }
 

@@ -1,6 +1,8 @@
 package com.pavliuchenko.jwtauthservice.config;
 
 import com.pavliuchenko.jwtauthservice.config.auth.basic.BasicAuthSuccessHandler;
+import com.pavliuchenko.jwtauthservice.config.auth.jwt.JwtReactiveAuthenticationManager;
+import com.pavliuchenko.jwtauthservice.config.auth.jwt.JwtToAuthenticationConverter;
 import com.pavliuchenko.jwtauthservice.service.jwt.JwtService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +33,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeExchange()
                 .pathMatchers("/sign-up","/service/public").permitAll()
+                .and()
+                .authorizeExchange()
                 .pathMatchers("/sign-in")
                 .authenticated()
                 .and()
@@ -58,7 +62,10 @@ public class SecurityConfig {
     }
 
     private WebFilter createJwtAuthFilter() {
-        return null;
+        JwtReactiveAuthenticationManager manager = new JwtReactiveAuthenticationManager();
+        AuthenticationWebFilter filter = new AuthenticationWebFilter(manager);
+        filter.setServerAuthenticationConverter(new JwtToAuthenticationConverter(jwtService));
+        return filter;
     }
 
 }

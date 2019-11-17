@@ -41,9 +41,9 @@ public class JwtServiceImpl implements JwtService{
         JwtInfo jwtInfo = JwtInfo.fromUser(user);
         return Jwts.builder()
                 .setHeaderParam("alg", SignatureAlgorithm.RS256.getValue())
+                .setClaims(jwtInfo.getClaims())
                 .setIssuer(ISSUER)
                 .setSubject(jwtInfo.getSubject())
-                .setClaims(jwtInfo.getClaims())
                 .setExpiration(DateUtils.addMinutes(new Date(), jwtExpiration))
                 .signWith(keyService.getPrivateKey())
                 .compact();

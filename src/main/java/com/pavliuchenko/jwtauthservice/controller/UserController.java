@@ -18,7 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(value = "/sign-in", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public Mono<Void> signIn(@RequestBody SignIn model) {
+    public Mono<Void> signIn(SignIn model) {
         return Mono.empty();
     }
 

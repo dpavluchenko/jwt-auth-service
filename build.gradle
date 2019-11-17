@@ -11,13 +11,16 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
-
+bootJar {
+    mainClassName = 'com.pavliuchenko.jwtauthservice.JwtAuthServiceApplication'
+}
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-jwt:1.0.10.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'commons-io:commons-io:2.6'
     implementation 'io.jsonwebtoken:jjwt-api:0.10.7'
     runtime 'io.jsonwebtoken:jjwt-impl:0.10.7'
     runtime 'io.jsonwebtoken:jjwt-jackson:0.10.7'

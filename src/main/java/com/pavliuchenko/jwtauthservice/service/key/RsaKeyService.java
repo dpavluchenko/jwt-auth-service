@@ -1,5 +1,6 @@
 package com.pavliuchenko.jwtauthservice.service.key;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -51,8 +52,7 @@ public class RsaKeyService implements KeyService {
     }
 
     private byte[] readKeyFile(String key) throws IOException {
-        Path path = new ClassPathResource(key).getFile().toPath();
-        return Files.readAllBytes(path);
+        return IOUtils.toByteArray(new ClassPathResource(key).getInputStream());
     }
 
 }
